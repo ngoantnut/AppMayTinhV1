@@ -30,21 +30,76 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case "=":
+                Solve();
                 output = input;
                 break;
             case "x":
-                input+="+";
+                Solve();
+                input+="*";
                 break;
             default:
                 if(input==null ){
                     input="";
                 }
                 if(data.equals("+")||data.equals("-")||data.equals("/")){
-
+                    Solve();
                 }
                 input+=data;
 
         }
         textView.setText(input);
+    }
+
+    public void Solve(){
+        if(input.split("\\*").length==2){
+            String number[] =input.split("\\*");
+            try {
+                double nhan= Double.parseDouble(number[0])*Double.parseDouble(number[1]);
+                input = nhan+ " ";
+            }
+            catch (Exception e){
+
+            }
+        }
+
+        if(input.split("\\+").length==2){
+            String number[] =input.split("\\+");
+            try {
+                double cong= Double.parseDouble(number[0])+Double.parseDouble(number[1]);
+                input = cong+ " ";
+            }
+            catch (Exception e){
+
+            }
+        }
+
+        if(input.split("\\-").length==2){
+            String number[] =input.split("\\-");
+            try {
+                double tru= Double.parseDouble(number[0])-Double.parseDouble(number[1]);
+                input = tru+ " ";
+            }
+            catch (Exception e){
+
+            }
+        }
+
+        if(input.split("\\/").length==2){
+            String number[] =input.split("\\/");
+            try {
+                double chia= Double.parseDouble(number[0])/Double.parseDouble(number[1]);
+                input = chia+ " ";
+            }
+            catch (Exception e){
+
+            }
+        }
+
+        String n[]= input.split("\\.");
+        if(n.length>1){
+            if(n[1].equals("0")){
+                input= n[0];
+            }
+        }
     }
 }
