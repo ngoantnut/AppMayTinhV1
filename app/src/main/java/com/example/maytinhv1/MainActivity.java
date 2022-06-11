@@ -20,12 +20,29 @@ public class MainActivity extends AppCompatActivity {
         Button button = (Button) view;
         String data = button.getText().toString();
         switch (data){
-            case "C":
-                input = "C";
-                break;
             case "AC":
-                input = "AC";
+                input = "";
                 break;
+            case "C":
+                if(input.length()>0){
+                    String newText =input.substring(0,input.length()-1);
+                    input=newText;
+                }
+                break;
+            case "=":
+                output = input;
+                break;
+            case "x":
+                input+="+";
+                break;
+            default:
+                if(input==null ){
+                    input="";
+                }
+                if(data.equals("+")||data.equals("-")||data.equals("/")){
+
+                }
+                input+=data;
 
         }
         textView.setText(input);
