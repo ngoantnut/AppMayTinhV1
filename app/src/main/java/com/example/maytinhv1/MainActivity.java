@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
                 Solve();
                 input+="*";
                 break;
+            case "^":
+                Solve();
+                input+="^";
+                break;
             default:
                 if(input==null ){
                     input="";
@@ -94,6 +98,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+        if(input.split("\\^").length==2){
+            String number[] =input.split("\\^");
+            try {
+                double mu= Math.pow(Double.parseDouble(number[0]),Double.parseDouble(number[1]));
+                input = mu+ " ";
+            }
+            catch (Exception e){
+
+            }
+        }
+
 
         String n[]= input.split("\\.");
         if(n.length>1){
